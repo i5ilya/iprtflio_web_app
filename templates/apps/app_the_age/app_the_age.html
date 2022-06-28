@@ -21,20 +21,22 @@ App "The Age"
 	<input type="text" name="age_app_name" class="form-control" required placeholder="Введите Ваше имя"><br>
 	<label for="validationDefault01" class="form-label">Возраст</label>
 	<input type="number" name="age_app_age" class="form-control" required placeholder="Введите Ваш возраст"><br>
-	<input type="submit" class="btn, btn-success"  /><br>
+	<input type="submit" class="btn, btn-success" /><br>
 
 </form>
 <span style='font-size:50px;'>&#128075;</span><br>
-<p class="lead text-muted">{{ansver}} </p>
+<p class="lead text-muted">{{ansver}} </p><br>
+<p class="lead text-muted">Original old CLI program on <a
+		href="https://github.com/i5ilya/Learningfirst/blob/master/The_age.py" target="_blank">GitHub</a></p><br>
 
 
 <script>
-	window.onload = function showMessage(){ 
+	window.onload = function showMessage() {
 		if ('{{ansver}}' === '') {
-		//pass
+			//pass
 		}
 		else {
-			alert("{{ansver}}");
+			window.alert("{{ansver}}");
 			return true;
 		}
 	}
