@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+
+{% block title %}
+App "The Age"
+{% endblock %}
+
+{% block body %}
+
+<h1>App: The Age</h1>
+
+<p class="lead text-muted">
+	Данная очень простая программа для правильного написания год/ лет/ года.
+	Года, оканчивающиеся на цифру 1 (1, 21, 31 и т.д.), должны записываться как 1 год, 21 год и т.д.
+	Года, оканчивающиеся на цифры 2, 3, 4 (2, 22, 32, 3, 23, 4, 24 и т.д.), должны записываться как 2 года, 22 года, 3 года, 44 года и т.д.
+	Все остальные года должны записываться со словом лет: 5 лет, 10 лет, 69 лет, 667 лет и т.д.
+</p>
+
+<form method="post">
+	<label for="validationDefault01" class="form-label">Имя</label>
+	<input type="text" name="age_app_name" class="form-control" required placeholder="Введите Ваше имя" ><br>
+	<label for="validationDefault01" class="form-label">Возраст</label>
+	<input type="number" name="age_app_age" class="form-control" required placeholder="Введите Ваш возраст" ><br>
+	<input type="submit" class="btn, btn-success"><br>
+</form>
+<span style='font-size:50px;'>&#128075;</span><br>
+<p class="lead text-muted">{{ansver}} </p>
+
+
+<!-- </div> -->
+
+
+
+
+{% endblock %}
