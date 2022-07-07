@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p>Hello, <span id="username"></span></p>
+
+    <input type="number" id="panel" placeholder="Enter number">
+    <button type="button" onclick="calculate()">Result</button>
+
+    <iframe name="noreload" style="display:none;"></iframe>
+    <form target="noreload">
+        <label for="validationDefault01" class="form-label">Возраст</label>
+        <input type="number" id="panel1" name="age_app_age" class="form-control" required placeholder="Введите Ваш возраст"><br>
+        <input type="submit" class="send__data__btn" /><br>
+    </form>
+
+    <p id="total_summ"></p>
+    <p id="print_in_html"></p>
+
+
+    <button type="button" class="send__data__btn">Send Data</button>
+    <p>Hello, <span id="response"></span></p>
+
+    <script>
+        var user = JSON.parse('{{ user | tojson | safe}}');
+        document.getElementById('username').innerHTML = user.firstname + " " +
+            user.lastname;
+        
+          
+            
+        function calculate() {
+            var panel = parseInt(document.getElementById("panel1").value);
+                if (isNaN(panel)) {
+                    //pass
+                }
+                else{
+                    total = panel * panel;
+                }
+                
+
+            document.getElementById("total_summ").innerHTML = total;
+            return panel
+            print_in_html(user.firstname)
+        }
+
+        function print_in_html(some_text) {
+            document.getElementById("print_in_html").innerHTML = some_text;
+
+        }
+
+
+        const btn = document.querySelector('.send__data__btn');
+
+        btn.addEventListener('click', function () {
+        let panel = calculate();       
+            fetch('/app_test', {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                method: 'POST',
+                body: JSON.stringify({
+                    'name': panel,
+                    'country': 'India'
+                })
+            })
+                .then(function (response) {
+
+                    if (response.ok) {
+                        response.json()
+                            .then(function (response) {
+                                //console.log(response);
+                                document.getElementById('response').innerHTML = response.answer
+                            });
+                    }
+                    else {
+                        throw Error('Something went wrong');
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        });
+        
+    </script>
+
+</body>
+
+</html>
