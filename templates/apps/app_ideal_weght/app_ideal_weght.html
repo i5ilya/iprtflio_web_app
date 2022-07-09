@@ -20,18 +20,21 @@ App "The Ideal Weght"
     Оригинал https://planetcalc.ru/35/
 </p>
 <iframe name="noreload" style="display:none;"></iframe>
-<form class="row g-3" target="noreload" name = "iwform">
+<form class="row g-3" target="noreload" name="iwform">
     <div class="col-md-4">
         <label for="user_height" class="form-label">Ваш рост</label>
-        <input type="number" class="form-control" id="user_height" required placeholder="Введите Ваш рост в см от 120 до 220"  min="120" max="220">
+        <input type="number" class="form-control" id="user_height" required
+            placeholder="Введите Ваш рост в см от 120 до 220" min="120" max="220">
     </div>
     <div class="col-md-4">
         <label for="user_hand" class="form-label">Укажите длину запястья</label>
-        <input type="number" class="form-control" id="user_hand" required placeholder="В среднем от 16 до 20 см" min="10" max="30">
+        <input type="number" class="form-control" id="user_hand" required placeholder="В среднем от 16 до 20 см"
+            min="10" max="30">
     </div>
     <div class="col-md-4">
         <label for="user_age" class="form-label">Введите возраст</label>
-        <input type="number" class="form-control" id="user_age" required placeholder="Введите Ваш возраст, лет" min="20" max="99">
+        <input type="number" class="form-control" id="user_age" required placeholder="Введите Ваш возраст, лет" min="20"
+            max="99">
     </div>
     <div class="col-md-4">
         <label for="user_sex" class="form-label">Выберете пол</label>
@@ -48,46 +51,50 @@ App "The Ideal Weght"
 <br>
 <p><span id="response"></span></p>
 
-<script>
+<script type="text/javascript" charset="UTF-8" >
     const btn = document.querySelector('.send__data__btn');
-    
+
     btn.addEventListener('click', function () {
         let user_height = parseInt(document.getElementById("user_height").value);
         let user_hand = parseInt(document.getElementById("user_hand").value);
         let user_age = parseInt(document.getElementById("user_age").value);
-        let user_sex = document.getElementById("user_sex").value      
-        fetch('/app_ideal_weght', {
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            method: 'POST',
-            body: JSON.stringify({
-                "user_height": user_height,
-                "user_hand": user_hand,
-                "user_age": user_age,
-                "user_sex": user_sex
+        let user_sex = document.getElementById("user_sex").value
+        if (isNaN(user_age) || isNaN(user_height) || isNaN(user_hand)) {
+            //None
+        }
+        else {
+
+            fetch('/app_ideal_weght', {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                method: 'POST',
+                body: JSON.stringify({
+                    "user_height": user_height,
+                    "user_hand": user_hand,
+                    "user_age": user_age,
+                    "user_sex": user_sex
+                })
             })
-        })
-            .then(function (response) {
-    
-                if (response.ok) {
-                    response.json()
-                        .then(function (response) {
-                            //console.log(response);
-                            document.getElementById('response').innerHTML = response.response;
-                        });
-                }
-                else {
-                    throw Error('Something went wrong');
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+                .then(function (response) {
+
+                    if (response.ok) {
+                        response.json()
+                            .then(function (response) {
+                                //console.log(response);
+                                document.getElementById('response').innerHTML = response.response;
+                            });
+                    }
+                    else {
+                        throw Error('Something went wrong');
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
     });
-    </script>
-    
+</script>
+
 
 {% endblock %}
-
-
