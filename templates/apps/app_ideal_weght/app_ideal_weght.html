@@ -61,6 +61,7 @@ App "The Ideal Weght"
         let user_sex = document.getElementById("user_sex").value
         if (isNaN(user_age) || isNaN(user_height) || isNaN(user_hand)) {
             //None
+            document.getElementById("user_height").focus();
         }
         else {
 
@@ -83,6 +84,7 @@ App "The Ideal Weght"
                             .then(function (response) {
                                 //console.log(response);
                                 document.getElementById('response').innerHTML = response.response;
+                                document.getElementById("response").scrollIntoView();
                             });
                     }
                     else {
