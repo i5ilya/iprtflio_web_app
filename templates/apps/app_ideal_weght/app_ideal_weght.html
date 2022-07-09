@@ -19,7 +19,7 @@ App "The Ideal Weght"
     астенического типа вес надо уменьшить примерно на 10%, для гиперстенического — увеличить.
     Оригинал https://planetcalc.ru/35/
 </p>
-<iframe name="noreload" style="display:none;"></iframe>
+<iframe name="noreload" title="noreload" style="display:none;"></iframe>
 <form class="row g-3" target="noreload" name="iwform">
     <div class="col-md-4">
         <label for="user_height" class="form-label">Ваш рост</label>
@@ -51,7 +51,7 @@ App "The Ideal Weght"
 <br>
 <p><span id="response"></span></p>
 
-<script src="{{url_for('static', filename='script_ideal_weght.js')}}" type="text/javascript" charset="UTF-8" ></script>
+<script src="{{url_for('static', filename='script_ideal_weght.js')}}" type="text/javascript" charset="UTF-8" content="X-Content-Type-Options=nosniff"></script>
 
 
 
