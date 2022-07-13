@@ -6,7 +6,7 @@ def ideal_weght(user_height: int, user_sex: str, user_hand: int, user_age: int) 
     def calc_factor(height: int) -> int:
         if height <= 165:
             return 100
-        if 166 >= height <= 174:
+        if 166 <= height <= 174:
             return 105
         if height >= 175:
             return 110
@@ -17,9 +17,9 @@ def ideal_weght(user_height: int, user_sex: str, user_hand: int, user_age: int) 
 
     # В функцию передаем пол -sex и длину запястья -hand
     def calc_body_type(sex: str, hand: int) -> str:
-        if sex == 'ж' and hand <= 16 or sex == 'м' and hand <= 17:
+        if sex == 'ж' and hand <= 15 or sex == 'м' and hand <= 17:
             return 'small'
-        elif sex == 'ж' and 17 <= hand <= 18 or sex == 'м' and 18 <= hand <= 19:
+        elif sex == 'ж' and 16 <= hand <= 18 or sex == 'м' and 17 < hand <= 20:
             return 'normal'
         else:
             return 'big'
@@ -68,5 +68,8 @@ def ideal_weght(user_height: int, user_sex: str, user_hand: int, user_age: int) 
 
 
 if __name__ == '__main__':
-    print(ideal_weght(120, 'ж', 10, 20))
-    
+    #print(ideal_weght(168, 'м', 15, 96))
+    number = 20
+    while number <= 100:
+        number += 1
+        print(f"возраст {number: } {ideal_weght(180, 'м', 18, number)}")
