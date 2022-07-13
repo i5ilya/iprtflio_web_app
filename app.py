@@ -34,12 +34,12 @@ def app_the_age():
 def app_ideal_weght():
     if request.method == "POST":
         jsonData = request.get_json()
-        print(jsonData)
+        #print(jsonData)
         user_height = jsonData['user_height']
         user_hand = jsonData['user_hand']
         user_age = jsonData['user_age']
         user_sex = jsonData['user_sex']
-        ideal_weght_1 = ideal_weght(user_height, user_sex, user_hand, user_age)
+        
         return {
             'response' : ideal_weght(user_height, user_sex, user_hand, user_age)
         }
