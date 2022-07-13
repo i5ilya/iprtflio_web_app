@@ -30,38 +30,36 @@ def app_the_age():
         return render_template('apps/app_the_age/app_the_age.html')
 
 
-@app.route("/app_ideal_weght", methods=["GET", "POST"])
-def app_ideal_weght():
+@app.route("/app_ideal_weight", methods=["GET", "POST"])
+def app_ideal_weight():
     if request.method == "POST":
-        jsonData = request.get_json()
-        #print(jsonData)
-        user_height = jsonData['user_height']
-        user_hand = jsonData['user_hand']
-        user_age = jsonData['user_age']
-        user_sex = jsonData['user_sex']
-        
+        json_data = request.get_json()
+        # print(json_data)
+        user_height = json_data['user_height']
+        user_hand = json_data['user_hand']
+        user_age = json_data['user_age']
+        user_sex = json_data['user_sex']
+
         return {
-            'response' : ideal_weght(user_height, user_sex, user_hand, user_age)
+            'response': ideal_weght(user_height, user_sex, user_hand, user_age)
         }
     else:
-        return render_template('apps/app_ideal_weght/app_ideal_weght.html')
-
-
+        return render_template('apps/app_ideal_weight/app_ideal_weight.html')
 
 
 @app.route("/app_test", methods=["GET", "POST"])
 def app_test():
     if request.method == "POST":
-        jsonData = request.get_json()
-        print(jsonData)
-        pythonsay = jsonData['name'] *2
+        json_data = request.get_json()
+        print(json_data)
+        pythonsay = json_data['name'] * 2
         some_my_text = 'I am some text answer'
 
         return {
-            'response' : some_my_text,
-            'answer' : pythonsay
+            'response': some_my_text,
+            'answer': pythonsay
         }
-        
+
     else:
         user = {'firstname': 'Harry', 'lastname': 'Potter'}
         return render_template("apps/app_test/test.html", user=user)

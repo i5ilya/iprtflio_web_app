@@ -11,7 +11,7 @@ btn.addEventListener('click', function () {
     }
     else {
 
-        fetch('/app_ideal_weght', {
+        fetch('/app_ideal_weight', {
             headers: {
                 'Content-Type': 'application/json'
             },
