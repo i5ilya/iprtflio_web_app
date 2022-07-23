@@ -8,9 +8,7 @@ btn.addEventListener('click', function () {
     if (isNaN(user_age) || isNaN(user_height) || isNaN(user_hand)) {
         //None
         document.getElementById("user_height").focus();
-    }
-    else {
-
+    } else {
         fetch('/app_ideal_weight', {
             headers: {
                 'Content-Type': 'application/json'
@@ -22,23 +20,18 @@ btn.addEventListener('click', function () {
                 "user_age": user_age,
                 "user_sex": user_sex
             })
-        })
-            .then(function (response) {
-
-                if (response.ok) {
-                    response.json()
-                        .then(function (response) {
-                            //console.log(response);
-                            document.getElementById('response').innerHTML = response.response;
-                            document.getElementById("response").scrollIntoView();
-                        });
-                }
-                else {
-                    throw Error('Something went wrong');
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (response) {
+                    //console.log(response);
+                    document.getElementById('response').innerHTML = response.response;
+                    document.getElementById("response").scrollIntoView();
+                });
+            } else {
+                throw Error('Something went wrong');
+            }
+        }).catch(function (error) {
+            console.log(error);
+        });
     }
 });
