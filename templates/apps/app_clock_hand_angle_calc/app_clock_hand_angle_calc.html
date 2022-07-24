@@ -80,7 +80,7 @@ App "The Ideal Weight"
 
 
   function show_time_and_angle(hour, minute) {
-    document.getElementById('time_now').innerHTML = hour + ":" + minute;
+    document.getElementById('time_now').innerHTML = hour + ":" + ('0' + minute).slice(-2);
     document.getElementById('angle_now').innerHTML = angle_now;
   }
 
@@ -109,11 +109,6 @@ App "The Ideal Weight"
       console.log(error);
     });
   }
-
-
-
-
-
 
 
   function drawClock(hour, minute) {
