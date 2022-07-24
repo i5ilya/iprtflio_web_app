@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, url_for, redirect
 
 from the_age_app import the_age_app
 from ideal_weght import ideal_weght
+from app_clock_hand_angle_calc import app_hand_angle_calc
 
 app = Flask(__name__)
 
@@ -63,6 +64,21 @@ def app_test():
     else:
         user = {'firstname': 'Harry', 'lastname': 'Potter'}
         return render_template("apps/app_test/test.html", user=user)
+
+
+@app.route("/app_clock_hand_angle_calc", methods=["GET", "POST"])
+def app_clock_hand_angle_calc():
+    if request.method == "POST":
+        json_data = request.get_json()
+        print(json_data)
+        hour = json_data['hour']
+        minute = json_data['minute']
+
+        return {
+            'response': app_hand_angle_calc(hour, minute)
+        }
+    else:
+        return render_template("apps/app_clock_hand_angle_calc/app_clock_hand_angle_calc.html")
 
 
 if __name__ == '__main__':
