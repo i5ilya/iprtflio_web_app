@@ -23,7 +23,7 @@ App "The Ideal Weight"
 </p>
 
 <iframe name="noreload" title="noreload" style="display:none;"></iframe>
-<form class="row g-3" target="noreload" name="iwform">
+<form onsubmit="return false" class="row g-3" target="noreload" name="iwform">
   <div class="col-md-4">
     <label for="hour" class="form-label">Enter Hour</label>
     <input type="number" class="form-control" id="hour" required placeholder="Enter Hour between 0 and 23" min="0"
@@ -81,7 +81,7 @@ App "The Ideal Weight"
 
   function show_time_and_angle(hour, minute) {
     document.getElementById('time_now').innerHTML = hour + ":" + ('0' + minute).slice(-2);
-    document.getElementById('angle_now').innerHTML = angle_now;
+    //document.getElementById('angle_now').innerHTML = angle_now;
   }
 
   function get_angle(hour, minute) {
