@@ -4,69 +4,63 @@
 Home page
 {% endblock %}
 
-<style>
-	.jumbotron {
-	background-color: #e9ecef;
-	}
-</style>
-
 
 {% block body %}
 
-<div class="jumbotron">
+<div class="jumbotron card bg-light my-1" >
 	<div class="container">
 		<h1 class="display-6">Hello, world!</h1>
 		<p>This is a template for a simple marketing or informational website. It includes a large callout called a
 			jumbotron and three supporting pieces of content. Use it as a starting point to create something more
 			unique.</p>
-		<p><a class="btn btn-primary" href="#" role="button">About me</a></p>
+		<p><a class="stretched-link" href="/about" ></a></p>
 	</div>
 </div>
 
 
 
-<div class="row row-cols-1 row-cols-md-4 g-4">
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 my-1">
 	<div class="col">
-		<div class="card bg-light">
+		<div class="card bg-light h-100" style="text-align: center;">
 			<img src="..." class="card-img-top" alt="...">
 			<div class="card-body">
 				<h5 class="card-title">Card title</h5>
 				<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
 					content. This content is a little bit longer.</p>
-				<a href="#" class="btn btn-primary">Go somewhere</a>
+				<a href="#" class="align-self-end btn btn-primary stretched-link">Go somewhere</a>
 			</div>
 		</div>
 	</div>
 	<div class="col">
-		<div class="card bg-light">
+		<div class="card bg-light h-100" style="text-align: center;">
 			<img src="..." class="card-img-top" alt="...">
 			<div class="card-body">
 				<h5 class="card-title">Card title</h5>
 				<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
 					content. This content is a little bit longer.</p>
-				<a href="#" class="btn btn-primary">Go somewhere</a>
+				<a href="#" class="align-self-end btn btn-primary stretched-link">Go somewhere</a>
 			</div>
 		</div>
 	</div>
 	<div class="col">
-		<div class="card bg-light">
-			<img src="..." class="card-img-top" alt="...">
+		<div class="card bg-light h-100" style="text-align: center;">
+			<!-- <img src="..." class="card-img-top" alt="..."> -->
+      <span style='font-size:50px;'>&#9200;</span>
 			<div class="card-body">
-				<h5 class="card-title">Card title</h5>
-				<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-					content.</p>
-				<a href="#" class="btn btn-primary">Go somewhere</a>
+				<h5 class="card-title">App clock hands angle calc</h5>
+				<p class="card-text">Calc the angle between the minute and hour hands of the clock</p>
+				<a href="app_clock_hand_angle_calc" class="align-self-end btn btn-primary stretched-link">Go to app</a>
 			</div>
 		</div>
 	</div>
 	<div class="col">
-		<div class="card bg-light">
-			<img src="..." class="card-img-top" alt="...">
+		<div class="card bg-light h-100 d-flex flex-column" style="text-align: center;">
+			<span style='font-size:50px;'>&#128679;</span>
+      <!-- <img src="..." class="card-img-top" alt="..."> -->
 			<div class="card-body">
-				<h5 class="card-title">Card title</h5>
-				<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-					content. This content is a little bit longer.</p>
-				<a href="#" class="btn btn-primary">Go somewhere</a>
+				<h5 class="card-title">Under construction</h5>
+				<p class="card-text">Under construction</p>
+				<a href="#" class="align-self-end btn btn-primary stretched-link">Go somewhere</a>
 			</div>
 		</div>
 	</div>
