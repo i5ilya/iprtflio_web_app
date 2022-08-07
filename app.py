@@ -17,6 +17,10 @@ def home():
 def about():
     return render_template('about.html')
 
+@app.route("/cv")
+def cv():
+    return render_template('cv.html')
+
 
 @app.route("/app_the_age", methods=["GET", "POST"])
 def app_the_age():
