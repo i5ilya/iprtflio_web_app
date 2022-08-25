@@ -11,11 +11,34 @@ Home page
 
 <div class="jumbotron card bg-light my-1">
 	<div class="container">
-		<h1 class="display-6">Hello world, StockAnalyzeVolume app!</h1>
-		<p>This simple program searches for stocks included in the <a href="https://en.wikipedia.org/wiki/List_of_S%26P_500_companies" target="_blank">S&P 500</a> index for a surge of the largest horizontal
+		<h1 class="display-6">StockAnalyzeVolume app!</h1>
+		<p>This simple program searches for stocks included in the <a
+				href="https://en.wikipedia.org/wiki/List_of_S%26P_500_companies" target="_blank">S&P 500</a> index for a
+			surge of the largest horizontal
 			volumes on the daily price chart, followed by the calculation of the price level (minimum and maximum),
 			where this volume is located.</p>
-		<p><a href="https://github.com/i5ilya/StockAnalyzeVolume/tree/master" class="btn btn-primary" target="_blank">For a full description go to github</a></p>
+		<div class="container-fluid">
+			<div class="row align-items-center">
+				<div class="col-auto">
+					<ul>
+						<li>First we find the horizontal volume spike (1).</li>
+						<li>Then we calculate the price level (2).</li>
+						<li>We draw a graph where the search results are marked with lines:</li>
+					</ul>
+				</div>
+				<div class="col-sm-9 col-lg-6 col-xl-6">
+					<div class="text-xl-center">
+						<img src="{{url_for('static', filename='ibm.png')}}" class="img-fluid" alt="IBM" width="342"
+							height="245">
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="text-center">
+			<p><a href="https://github.com/i5ilya/StockAnalyzeVolume/tree/master" class="btn btn-primary"
+					target="_blank">For description go to github</a></p>
+		</div>
 	</div>
 </div>
 
