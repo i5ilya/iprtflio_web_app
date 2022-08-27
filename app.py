@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, url_for, redirect
 from the_age_app import the_age_app
 from ideal_weght import ideal_weght
 from app_clock_hand_angle_calc import app_hand_angle_calc
+from app_sort_count_words import count_sort_words
 
 app = Flask(__name__)
 
@@ -74,15 +75,27 @@ def app_test():
 def app_clock_hand_angle_calc():
     if request.method == "POST":
         json_data = request.get_json()
-        print(json_data)
+        #print(json_data)
         hour = json_data['hour']
         minute = json_data['minute']
-
         return {
             'response': app_hand_angle_calc(hour, minute)
         }
     else:
         return render_template("apps/app_clock_hand_angle_calc/app_clock_hand_angle_calc.html")
+
+
+@app.route('/app_words', methods=['GET', 'POST'])
+def app_words():
+    if request.method == 'POST':
+        json_data = request.get_json()
+        some_text = json_data['some_text']
+        return {
+            'response' : count_sort_words(some_text)
+        }
+    else:
+        return render_template('apps/app_words/app_words.html')
+
 
 
 if __name__ == '__main__':

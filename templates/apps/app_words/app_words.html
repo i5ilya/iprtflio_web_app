@@ -62,14 +62,9 @@ That lay in the house that Jack built.</textarea>
                         document.getElementById('sum_unique_words').innerHTML = response.response.sum_unique_words;
                         document.getElementById('list_one_word').innerHTML = response.response.list_one_word;
                         const div = document.getElementById('dic');
-
                         response.response.new_list.forEach(function (item, index) {
                             let html = `<p>Word: '${item.word}' repeats ${item.sum} times</p>`;
-                                div.insertAdjacentHTML('beforeend', html);
-
-
-
-                            
+                            div.insertAdjacentHTML('beforeend', html);
                         })
                     });
                 } else {
