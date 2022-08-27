@@ -1,0 +1,89 @@
+{% extends 'index.html' %}
+
+{% block title %}
+App Words
+{% endblock %}
+
+{% block body %}
+<br>
+<p class="lead text-muted">
+    Count Word Frequency.
+</p>
+
+<p class="lead text-muted">
+    Enter your text below:
+</p>
+
+<iframe name="noreload" title="noreload" style="display:none;"></iframe>
+<form onsubmit="return false" class="row g-3" target="noreload" name="iwform">
+    <div class="mb-3">
+        <label for="some_text" class="form-label">Enter any text:</label>
+        <textarea class="form-control" id="some_text" rows="5" required placeholder="Enter some text here" required>
+This is the house that Jack built.
+This is the malt that lay in the house that Jack built.
+This is the rat that ate the malt
+That lay in the house that Jack built.</textarea>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary send__data__btn">Calculate</button>
+    </div>
+</form>
+<br>
+<p>Total words: <span id="sum_all_words"></span></p>
+<p>Number of punctuation marks: <span id="sum_punctuation"></span></p>
+<p>Number of unique words: <span id="sum_unique_words"></span></p>
+<p>Words that only repeat once: <span id="list_one_word"></span></p>
+<div id="dic"></div>
+
+<script>
+
+    const btn = document.querySelector('.send__data__btn');
+
+    btn.addEventListener('click', function () {
+        let some_text = document.getElementById("some_text").value
+        if (typeof some_text != 'string' && some_text.length === 0) {
+            //None
+            document.getElementById("some_text").focus();
+        } else {
+            fetch('/app_words', {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                method: 'POST',
+                body: JSON.stringify({
+                    "some_text": some_text,
+                })
+            }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (response) {
+                        console.log(response);
+                        document.getElementById('sum_all_words').innerHTML = response.response.sum_all_words;
+                        document.getElementById('sum_punctuation').innerHTML = response.response.sum_punctuation;
+                        document.getElementById('sum_unique_words').innerHTML = response.response.sum_unique_words;
+                        document.getElementById('list_one_word').innerHTML = response.response.list_one_word;
+                        const div = document.getElementById('dic');
+
+                        response.response.new_list.forEach(function (item, index) {
+                            let html = `<p>Word: '${item.word}' repeats ${item.sum} times</p>`;
+                                div.insertAdjacentHTML('beforeend', html);
+
+
+
+                            
+                        })
+                    });
+                } else {
+                    throw Error('Something went wrong');
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    });
+
+</script>
+
+
+
+
+{% endblock %}
