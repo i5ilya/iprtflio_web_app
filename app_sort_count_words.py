@@ -3,21 +3,17 @@ import string
 
 def count_sort_words(any_text):
     # Удалить знаки переноса строк, которые в Python пишется как '\n' и '\r'
-    any_text = any_text.replace('\n', ' ')
-    # Удалить знаки переноса строк, которые в Python пишется как '\n' и '\r'
-    any_text = any_text.replace('\r', ' ')
+    any_text = any_text.replace("\r", " ").replace("\n", " ")
 
-    # punctuation = ['.', ',', ';', ':', '!', '?', '"',
-    #                   "'", '(', ')', '...', '—', '«', '»', '.', ' - ', '`']
     punctuation = string.punctuation
 
-    # посчитаем знаки препинания
-    def count_punctuation(some_string: str) -> str:
-        count_punct = 0
+    # Посчитаем знаки препинания
+    def count_punctuation(some_string: str) -> int:
+        count = 0
         for value in some_string:
             if value in punctuation:
-                count_punct = count_punct + 1
-        return count_punct
+                count += 1
+        return count
 
     sum_punctuation = count_punctuation(any_text)
 
@@ -30,28 +26,28 @@ def count_sort_words(any_text):
     new_text = new_text.lower()
 
     # split - метод, который разбивает сроку и делает из нее новый список
-    mas = new_text.split(' ')
-    for x in mas:  # лишние пробелы превратились в '', удалим их:
-        if '' in mas:
-            mas.remove('')
+    mas1 = new_text.split(' ')
+    # for x in mas:  # лишние пробелы превратились в '', удалим их:
+    mas = [value for value in mas1 if value != '']
 
     # set - метод создания множества. Мы превращаем список в множество. Множества не содержат дублей.
     unique = set(mas)
 
     # создадим и заполним словарь, ключ - это слово, значение - число повторений слова в списке.
-    raw_dic = {}
-    for word in unique:
-        raw_dic[word] = int(mas.count(word))
+    raw_dic = {word : int(mas.count(word)) for word in unique}
+    # for word in unique:
+    #     raw_dic[word] = int(mas.count(word))
 
-    sorted_dict = {}  # создадим новый словарь
+
     ''' Сортировка:  Тут с помощью параметра "key" - указываем как именно осуществлять сортировку
     И мы сортируем по значениям (метод .get возвращает значение ключа). То есть, значение - у нас кол-во слов,
     по нему и сортируем.  reverse - перевернуть'''
     sorted_keys = sorted(raw_dic, key=raw_dic.get, reverse=True)
 
     # заполним новый словарь: ключ - отсортированные ключи = значение (число) по ключу из первого словаря.
-    for k in sorted_keys:
-        sorted_dict[k] = raw_dic[k]
+    sorted_dict = {k: raw_dic[k] for k in sorted_keys}  # создадим новый словарь
+    # for k in sorted_keys:
+    #     sorted_dict[k] = raw_dic[k]
 
     list_one_word = []  # это под список слов, повторяющихся один раз.
     dic_for_return = {}  # конечный словарь
