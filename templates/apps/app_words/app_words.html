@@ -5,20 +5,12 @@ App Words
 {% endblock %}
 
 {% block body %}
-<br>
-<p class="lead text-muted">
-    Count Word Frequency.
-</p>
-
-<p class="lead text-muted">
-    Enter your text below:
-</p>
-
 <iframe name="noreload" title="noreload" style="display:none;"></iframe>
 <form onsubmit="return false" class="row g-3" target="noreload" name="iwform">
     <div class="mb-3">
-        <label for="some_text" class="form-label">Enter any text:</label>
-        <textarea class="form-control" id="some_text" rows="5" required placeholder="Enter some text here" required>
+        <label for="some_text" class="form-label lead text-muted">Count Word Frequency. Enter your text below, then press "Calculate": </label>
+        <textarea class="form-control shadow p-3 bg-body rounded" id="some_text" rows="4" required
+            placeholder="Enter some text here" required>
 This is the house that Jack built.
 This is the malt that lay in the house that Jack built.
 This is the rat that ate the malt
@@ -29,11 +21,15 @@ That lay in the house that Jack built.</textarea>
     </div>
 </form>
 <br>
-<p>Total words: <span id="sum_all_words"></span></p>
-<p>Number of punctuation marks: <span id="sum_punctuation"></span></p>
-<p>Number of unique words: <span id="sum_unique_words"></span></p>
-<p>Words that only repeat once: <span id="list_one_word"></span></p>
-<div id="dic"></div>
+<div class="shadow p-3 mb-5 bg-body rounded">
+    <p><ins>Total words</ins>: <span class="fw-bold" id="sum_all_words"></span></p>
+    <p><ins>Number of punctuation marks</ins>: <span class="fw-bold" id="sum_punctuation"></span></p>
+    <p><ins>Number of unique words</ins>: <span class="fw-bold" id="sum_unique_words"></span></p>
+    <p><ins>Words that only repeat once</ins>: <span id="list_one_word"></span></p>
+</div>
+
+<ul id="dic" class="list-group list-group-numbered shadow bg-body rounded">
+  </ul>
 
 <script>
 
@@ -41,7 +37,7 @@ That lay in the house that Jack built.</textarea>
 
     btn.addEventListener('click', function () {
         let some_text = document.getElementById("some_text").value
-        if (typeof some_text != 'string' && some_text.length === 0) {
+        if (typeof some_text != 'string' || some_text.length === 0) {
             //None
             document.getElementById("some_text").focus();
         } else {
@@ -62,9 +58,10 @@ That lay in the house that Jack built.</textarea>
                         document.getElementById('sum_unique_words').innerHTML = response.response.sum_unique_words;
                         document.getElementById('list_one_word').innerHTML = response.response.list_one_word;
                         const div = document.getElementById('dic');
+                        document.getElementById('dic').innerHTML = '';
                         response.response.new_list.forEach(function (item, index) {
-                            let html = `<p>Word: '${item.word}' repeats ${item.sum} times</p>`;
-                            div.insertAdjacentHTML('beforeend', html);
+                            let html = `<li class="list-group-item">Word: <b>'${item.word}'</b> repeats <b>${item.sum}</b> times</li>`;
+                            div.insertAdjacentHTML('beforeend', html);                                                    
                         })
                     });
                 } else {
@@ -75,10 +72,5 @@ That lay in the house that Jack built.</textarea>
             });
         }
     });
-
 </script>
-
-
-
-
 {% endblock %}
