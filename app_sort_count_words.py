@@ -5,7 +5,7 @@ def count_sort_words(any_text):
     # Удалить знаки переноса строк, которые в Python пишется как '\n' и '\r'
     any_text = any_text.replace("\r", " ").replace("\n", " ")
 
-    punctuation = string.punctuation
+    punctuation = string.punctuation  # возьмем знаки препинания из библиотеки string
 
     # Посчитаем знаки препинания
     def count_punctuation(some_string: str) -> int:
