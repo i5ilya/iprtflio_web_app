@@ -47,11 +47,14 @@ Home page
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 my-1">
 	<div class="col">
 		<div class="card bg-light h-100 text-center">
-			<span style='font-size:50px;'>&#128116;</span>
+			<!-- <span style='font-size:50px;'>&#128116;</span> -->
+			<div class="text-center align-center p-2"> 
+			<img src="{{url_for('static', filename='servio.png')}}" class="img-fluid" alt="Servio" style="max-height: 59px; min-height: 59px">
+			</div>
 			<div class="card-body d-flex flex-column">
-				<h5 class="card-title">App: The Age</h5>
-				<p class="card-text">This is a very simple app.</p>
-				<a href="app_the_age" class="align-self-center mt-auto btn btn-primary stretched-link">Go to app</a>
+				<h5 class="card-title">Django Demo Shop</h5>
+				<p class="card-text">Basic Django E-Commerce web shop + Servio API.</p>
+				<a href="https://github.com/i5ilya/DjangoProject" class="align-self-center mt-auto btn btn-primary stretched-link">Go to app</a>
 			</div>
 		</div>
 	</div>
